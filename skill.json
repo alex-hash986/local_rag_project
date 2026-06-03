@@ -1,0 +1,27 @@
+{
+    "skill_name": "local_rag_project_assistant",
+    "version": "1.0.0",
+    "description": "Инструкция по работе с MVP локальной базы знаний (RAG-система) на Haystack 2.0 и Streamlit",
+    "repository_structure": {
+        "root": "local_rag_project/",
+        "main_app": "local_rag_project/app.py",
+        "dependencies": "local_rag_project/requirements.txt",
+        "documentation": "local_rag_project/README.md"
+    },
+    "environment_requirements": {
+        "python_version": "3.10+",
+        "env_variables": [
+            "OPENAI_API_KEY"
+        ],
+        "critical_settings": "В docling обязательно должно быть отключено распознавание (pipeline_options.do_ocr = False) для предотвращения сетевых таймаутов на Windows"
+    },
+    "execution_commands": {
+        "install_dependencies": "pip install -r local_rag_project/requirements.txt",
+        "run_application": "python -m streamlit run local_rag_project/app.py"
+    },
+    "ai_agent_rules": [
+        "При модификации app.py всегда сохранять InMemoryDocumentStore для простоты локального запуска.",
+        "Не включать OCR в Docling, так как цифровые PDF-файлы парсятся напрямую, без скачивания тяжелых нейросетей.",
+        "Все новые относительные пути внутри кода привязывать к запуску из корня рабочего пространства pa-finance."
+    ]
+}
